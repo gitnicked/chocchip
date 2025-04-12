@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazing Chocolate Chip Cookies - Redesigned</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        /* Base styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Custom Gradient Text */
+        .gradient-text {
+            background: linear-gradient(to right, #f59e0b, #fbbf24, #fcd34d); /* Amber gradient */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Custom list markers */
+        ul li::marker {
+            color: #6b7280; /* gray-500 */
+        }
+
+        /* Custom scrollbar for a dark theme */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #1f2937; } /* gray-800 */
+        ::-webkit-scrollbar-thumb { background: #4b5563; border-radius: 4px; } /* gray-600 */
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; } /* gray-500 */
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
+        /* Staggered fade-in for list items */
+        .stagger-fade > * {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Accordion styles with smooth transition */
+        .accordion-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out 0.1s, padding 0.5s ease-in-out;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-content.open {
+            max-height: 600px; /* Generous max-height */
+            opacity: 1;
+            padding-top: 1rem; /* py-4 */
+            padding-bottom: 1rem; /* py-4 */
+        }
+        .accordion-arrow {
+            transition: transform 0.3s ease-out;
+        }
+        .accordion-arrow.rotated {
+             transform: rotate(90deg);
+        }
+
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300 min-h-screen">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-6xl">
+
+        <header class="mb-12 md:mb-16 text-center fade-in" style="animation-delay: 0.1s;">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-3 gradient-text">
+                Amazing Chocolate Chip Cookies
+            </h1>
+            <p class="text-lg text-slate-400 max-w-2xl mx-auto">
+                The only chocolate chip cookie recipe you'll ever need. Perfectly chewy, slightly crispy edges, and loaded with chocolate.
+            </p>
+        </header>
+
+        <section class="mb-12 md:mb-16 fade-in" style="animation-delay: 0.3s;">
+             <h2 class="text-3xl font-bold mb-8 text-center gradient-text">At a Glance</h2>
+             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 text-center">
+                 <div class="bg-slate-800 p-4 rounded-lg shadow-md border border-slate-700 hover:border-amber-500 transition-colors duration-300 flex flex-col items-center justify-center">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-amber-400 mb-2">
+                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                     </svg>
+                     <p class="font-medium text-slate-400 text-xs uppercase tracking-wider mb-1">Prep Time</p>
+                     <p class="text-lg font-semibold text-slate-100">10 mins</p>
+                 </div>
+                 <div class="bg-slate-800 p-4 rounded-lg shadow-md border border-slate-700 hover:border-amber-500 transition-colors duration-300 flex flex-col items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-amber-400 mb-2">
+                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
+                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.468 3.75 3.75 0 0 0-7.493 0 3.75 3.75 0 0 0 .495 7.468" />
+                     </svg>
+                     <p class="font-medium text-slate-400 text-xs uppercase tracking-wider mb-1">Cook Time</p>
+                     <p class="text-lg font-semibold text-slate-100">12 mins</p>
+                 </div>
+                 <div class="bg-slate-800 p-4 rounded-lg shadow-md border border-slate-700 hover:border-amber-500 transition-colors duration-300 flex flex-col items-center justify-center">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-amber-400 mb-2">
+                         <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.162 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-4.243-4.243l3.275-3.275a4.5 4.5 0 0 0-6.336 4.486c.046.58.298 1.193.766 1.743m0 0c-.618.43.891.713 1.649 1.085" />
+                     </svg>
+                     <p class="font-medium text-slate-400 text-xs uppercase tracking-wider mb-1">Chill Time</p>
+                     <p class="text-lg font-semibold text-slate-100">60 mins</p>
+                 </div>
+                 <div class="bg-slate-800 p-4 rounded-lg shadow-md border border-slate-700 hover:border-amber-500 transition-colors duration-300 flex flex-col items-center justify-center">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-amber-400 mb-2">
+                         <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008Zm0-4.5h.008v.008H9.75v-.008Zm3-1.5h.008v.008H12.75v-.008Zm1.5 1.5h.008v.008H14.25V15Zm0 2.25h.008v.008H14.25v-.008Z" />
+                     </svg>
+                     <p class="font-medium text-slate-400 text-xs uppercase tracking-wider mb-1">Total Time</p>
+                     <p class="text-lg font-semibold text-slate-100">82 mins</p>
+                 </div>
+                 <div class="bg-slate-800 p-4 rounded-lg shadow-md border border-slate-700 hover:border-amber-500 transition-colors duration-300 flex flex-col items-center justify-center col-span-2 md:col-span-1 lg:col-span-1">
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-amber-400 mb-2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.4-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.4-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.4 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.4.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                    </svg>
+                     <p class="font-medium text-slate-400 text-xs uppercase tracking-wider mb-1">Yield</p>
+                     <p class="text-lg font-semibold text-slate-100">~30 Cookies</p>
+                 </div>
+             </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+
+            <section class="lg:col-span-1 bg-slate-800 rounded-lg p-6 shadow-md border border-slate-700 fade-in" style="animation-delay: 0.5s;">
+                <h2 class="text-2xl font-bold mb-5 gradient-text border-b border-slate-600 pb-3">Ingredients</h2>
+                <ul class="space-y-3 list-disc list-inside text-slate-300 stagger-fade">
+                    <li style="animation-delay: 0.6s;"><span class="font-medium text-slate-100">1 cup (227g)</span> unsalted butter, very soft</li>
+                    <li style="animation-delay: 0.65s;"><span class="font-medium text-slate-100">1 cup (213g)</span> packed light brown sugar</li>
+                    <li style="animation-delay: 0.7s;"><span class="font-medium text-slate-100">1/2 cup (100g)</span> granulated sugar</li>
+                    <li style="animation-delay: 0.75s;"><span class="font-medium text-slate-100">1 tbsp</span> vanilla extract</li>
+                    <li style="animation-delay: 0.8s;"><span class="font-medium text-slate-100">1 tsp</span> kosher salt</li>
+                    <li style="animation-delay: 0.85s;"><span class="font-medium text-slate-100">2</span> large eggs</li>
+                    <li style="animation-delay: 0.9s;"><span class="font-medium text-slate-100">3 cups (360g)</span> all-purpose flour</li>
+                    <li style="animation-delay: 0.95s;"><span class="font-medium text-slate-100">1 tsp</span> baking soda</li>
+                    <li style="animation-delay: 1.0s;"><span class="font-medium text-slate-100">1/2 tsp</span> baking powder</li>
+                    <li style="animation-delay: 1.05s;"><span class="font-medium text-slate-100">2 cups (12 oz)</span> semi-sweet chocolate chunks/chips</li>
+                </ul>
+            </section>
+
+            <section class="lg:col-span-2 bg-slate-800 rounded-lg p-6 shadow-md border border-slate-700 fade-in" style="animation-delay: 0.7s;">
+                <div class="flex justify-between items-center border-b border-slate-600 pb-3 mb-6">
+                    <h2 class="text-2xl font-bold gradient-text">Method</h2>
+                    <span class="text-sm text-slate-400 italic hidden sm:block">Click steps to expand/collapse</span>
+                </div>
+                 <span class="text-sm text-slate-400 italic sm:hidden mb-4 block text-center">Click steps to expand/collapse</span>
+
+                <div x-data="{ openStep: 1 }" class="space-y-3">
+                    <div class="bg-slate-900 rounded-md border border-slate-700 overflow-hidden"> <button @click="openStep = (openStep === 1 ? null : 1)" class="w-full flex justify-between items-center p-4 text-left hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            <span class="text-lg font-medium text-slate-100">1. Start the Dough</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 accordion-arrow" :class="{ 'rotated': openStep === 1 }">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                        <div x-show="openStep === 1" class="accordion-content px-4 text-slate-300" :class="{ 'open': openStep === 1 }">
+                            Beat butter, sugars, vanilla, and salt on medium-high speed until pale and fluffy (about 2 minutes). Use a stand mixer with a paddle attachment or a hand mixer. Scrape down the sides of the bowl as needed.
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-md border border-slate-700 overflow-hidden">
+                        <button @click="openStep = (openStep === 2 ? null : 2)" class="w-full flex justify-between items-center p-4 text-left hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            <span class="text-lg font-medium text-slate-100">2. Add Eggs</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 accordion-arrow" :class="{ 'rotated': openStep === 2 }">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                        <div x-show="openStep === 2" class="accordion-content px-4 text-slate-300" :class="{ 'open': openStep === 2 }">
+                            Add the eggs one at a time, beating for about 30 seconds after each addition until fully incorporated. Scrape down the sides and bottom of the bowl after adding each egg.
+                        </div>
+                    </div>
+
+                     <div class="bg-slate-900 rounded-md border border-slate-700 overflow-hidden">
+                        <button @click="openStep = (openStep === 3 ? null : 3)" class="w-full flex justify-between items-center p-4 text-left hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            <span class="text-lg font-medium text-slate-100">3. Combine Dry & Chocolate</span>
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 accordion-arrow" :class="{ 'rotated': openStep === 3 }">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                        <div x-show="openStep === 3" class="accordion-content px-4 text-slate-300" :class="{ 'open': openStep === 3 }">
+                           In a separate bowl, whisk together the flour, baking soda, and baking powder. Add the dry ingredients to the wet ingredients and mix on low speed until just combined – be careful not to overmix. Gently stir in the chocolate chunks or chips using a spatula.
+                        </div>
+                    </div>
+
+                     <div class="bg-slate-900 rounded-md border border-slate-700 overflow-hidden">
+                        <button @click="openStep = (openStep === 4 ? null : 4)" class="w-full flex justify-between items-center p-4 text-left hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            <span class="text-lg font-medium text-slate-100">4. Chill Dough</span>
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 accordion-arrow" :class="{ 'rotated': openStep === 4 }">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                        <div x-show="openStep === 4" class="accordion-content px-4 text-slate-300" :class="{ 'open': openStep === 4 }">
+                           Cover the bowl tightly with plastic wrap and refrigerate the dough for at least 1 hour. For best results and deeper flavor, chill overnight (up to 3 days). Chilling is crucial for texture and preventing spreading.
+                        </div>
+                    </div>
+
+                     <div class="bg-slate-900 rounded-md border border-slate-700 overflow-hidden">
+                        <button @click="openStep = (openStep === 5 ? null : 5)" class="w-full flex justify-between items-center p-4 text-left hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            <span class="text-lg font-medium text-slate-100">5. Preheat & Prep</span>
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 accordion-arrow" :class="{ 'rotated': openStep === 5 }">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                        <div x-show="openStep === 5" class="accordion-content px-4 text-slate-300" :class="{ 'open': openStep === 5 }">
+                           When ready to bake, preheat your oven to 375°F (190°C). Line baking sheets with parchment paper or silicone baking mats.
+                        </div>
+                    </div>
+
+                     <div class="bg-slate-900 rounded-md border border-slate-700 overflow-hidden">
+                        <button @click="openStep = (openStep === 6 ? null : 6)" class="w-full flex justify-between items-center p-4 text-left hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            <span class="text-lg font-medium text-slate-100">6. Scoop Cookies</span>
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 accordion-arrow" :class="{ 'rotated': openStep === 6 }">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                        <div x-show="openStep === 6" class="accordion-content px-4 text-slate-300" :class="{ 'open': openStep === 6 }">
+                            Scoop rounded portions of the chilled dough (about 2 tablespoons each, a medium cookie scoop works well) onto the prepared baking sheets. Space them about 3 inches apart (usually 12 per standard sheet).
+                        </div>
+                    </div>
+
+                     <div class="bg-slate-900 rounded-md border border-slate-700 overflow-hidden">
+                        <button @click="openStep = (openStep === 7 ? null : 7)" class="w-full flex justify-between items-center p-4 text-left hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            <span class="text-lg font-medium text-slate-100">7. Bake</span>
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 accordion-arrow" :class="{ 'rotated': openStep === 7 }">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                        <div x-show="openStep === 7" class="accordion-content px-4 text-slate-300" :class="{ 'open': openStep === 7 }">
+                            Bake for 10-12 minutes, or until the edges are golden brown and the centers look slightly underdone (they will continue to cook and set on the baking sheet). Rotate baking sheets halfway through if baking multiple sheets at once.
+                        </div>
+                    </div>
+
+                     <div class="bg-slate-900 rounded-md border border-slate-700 overflow-hidden">
+                        <button @click="openStep = (openStep === 8 ? null : 8)" class="w-full flex justify-between items-center p-4 text-left hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            <span class="text-lg font-medium text-slate-100">8. Cool Down</span>
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 accordion-arrow" :class="{ 'rotated': openStep === 8 }">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                        <div x-show="openStep === 8" class="accordion-content px-4 text-slate-300" :class="{ 'open': openStep === 8 }">
+                           Let the cookies cool on the baking sheets for 5-10 minutes. This step is important for them to set properly. Then, carefully transfer the cookies to a wire rack to cool completely.
+                        </div>
+                    </div>
+
+                     <div class="bg-slate-900 rounded-md border border-slate-700 overflow-hidden">
+                        <button @click="openStep = (openStep === 9 ? null : 9)" class="w-full flex justify-between items-center p-4 text-left hover:bg-slate-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-opacity-50">
+                            <span class="text-lg font-medium text-slate-100">9. Store & Enjoy!</span>
+                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-5 h-5 text-slate-400 accordion-arrow" :class="{ 'rotated': openStep === 9 }">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </button>
+                        <div x-show="openStep === 9" class="accordion-content px-4 text-slate-300" :class="{ 'open': openStep === 9 }">
+                           Once completely cooled, store the cookies in an airtight container at room temperature for up to 5 days. Enjoy your delicious homemade cookies!
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div> <footer class="mt-16 pt-8 border-t border-slate-700 text-center text-slate-500 text-sm fade-in" style="animation-delay: 1.2s;">
+            Recipe adapted from various sources | Happy Baking!
+        </footer>
+
+    </div> </body>
+</html>
